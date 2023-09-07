@@ -1,1 +1,5 @@
-int i = 1
+
+
+i = 1
+print("hello world")
+print(i)
