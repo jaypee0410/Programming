@@ -1,6 +1,11 @@
 # variables = container for a value.
 
-name = "John"
-print(name)
+first_name = "John"
+last_name = "Philip"
+full_name = first_name + " " + last_name
 
-print("hello "+name)
+print("hello "+full_name)
+
+###############################
+
+age = 27
