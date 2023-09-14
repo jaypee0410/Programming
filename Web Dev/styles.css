@@ -1,0 +1,109 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* About Section */
+#about {
+    background-color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Skills Section */
+#skills {
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
+
+#skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+#skills ul li {
+    margin: 10px 0;
+}
+
+/* Education Section */
+#education {
+    background-color: #fff;
+    padding: 2rem;
+}
+
+#education ul {
+    list-style: none;
+    padding: 0;
+}
+
+#education ul li {
+    margin: 10px 0;
+}
+
+/* Projects Section */
+#projects {
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
+
+.project {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 10px 0;
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+/* Others Section */
+#others {
+    background-color: #fff;
+    padding: 2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        padding: 0.5rem 0;
+    }
+
+    nav ul li {
+        margin-right: 10px;
+    }
+
+    #about,
+    #skills,
+    #education,
+    #projects,
+    #others {
+        padding: 1rem;
+    }
+}
