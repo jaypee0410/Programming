@@ -1,10 +1,10 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1;
     background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
+    margin: 20;
+    padding: 20;
 }
 
 header {
@@ -12,6 +12,21 @@ header {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
+}
+
+/* Panel Styles */
+.panel {
+    background-color: #fff;
+    padding: 2rem;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.panel h2 {
+    font-size: 24px;
+    margin-top: 0;
 }
 
 nav ul {
@@ -30,12 +45,17 @@ nav ul li a {
     font-weight: bold;
 }
 
+nav ul li a:hover {
+    color: rgb(33, 148, 214);
+}
+
 /* About Section */
 #about {
     background-color: #fff;
     padding: 2rem;
     text-align: center;
 }
+
 
 /* Skills Section */
 #skills {
@@ -51,6 +71,9 @@ nav ul li a {
 #skills ul li {
     margin: 10px 0;
 }
+
+
+
 
 /* Education Section */
 #education {
@@ -73,13 +96,13 @@ nav ul li a {
     padding: 2rem;
 }
 
-.project {
+#project {
     border: 1px solid #ccc;
     padding: 1rem;
     margin: 10px 0;
 }
 
-.project h3 {
+#project h3 {
     margin-top: 0;
 }
 
@@ -107,3 +130,33 @@ nav ul li a {
         padding: 1rem;
     }
 }
+
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 1%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1;
+}
+
+#back-to-top:hover {
+    background-color: rgb(33, 148, 214);
+}
+
+
+.panel-container {
+    position: relative;
+    width: 300px; /* Set the initial width */
+    height: 200px; /* Set the initial height */
+    margin: 10px;
+    float: left; /* To arrange panels horizontally */
+    border: 1px solid #ccc;
+}
+
