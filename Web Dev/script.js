@@ -48,3 +48,36 @@ function isInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
+
+// Get references to the email address and copy button
+const emailElement = document.getElementById('email');
+const copyButton = document.getElementById('copyButton');
+
+// Add a click event listener to the copy button
+copyButton.addEventListener('click', () => {
+    // Create a temporary input element
+    const tempInput = document.createElement('input');
+    
+    // Set its value to the email address
+    tempInput.value = emailElement.textContent;
+    
+    // Append the input element to the document
+    document.body.appendChild(tempInput);
+    
+    // Select the input's contents
+    tempInput.select();
+    
+    // Copy the selected text to the clipboard
+    document.execCommand('copy');
+    
+    // Remove the temporary input element
+    document.body.removeChild(tempInput);
+    
+    // Provide visual feedback (e.g., change button text)
+    copyButton.textContent = 'Copied!';
+    
+    // Reset the button text after a short delay
+    setTimeout(() => {
+        copyButton.textContent = 'Copy';
+    }, 2000); // Reset after 2 seconds (adjust as needed)
+});

@@ -1,7 +1,7 @@
 /* Global Styles */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 150px;
+    /*scroll-padding-top: 150px;*//*remove comments if position: sticky is true*/
 }
 
 body {
@@ -17,7 +17,7 @@ header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    position: sticky;
+    /*position: sticky;*//*remove comments if you want navigation pane to be sticky*/
     padding: 1rem 0;
     width:  100%;
     height: auto;
@@ -77,10 +77,16 @@ p {
     padding-left: 10px;
 }
 
+/* Work section */
+#work {
+    background-color: #fff;
+    padding: 2rem;
+}
+
 
 /* Education Section */
 #education {
-    background-color: #fff;
+    background-color: #f4f4f4;
     padding: 2rem;
 }
 
@@ -92,24 +98,29 @@ p {
 #education ul li {
     margin: 10px 0;
     line-height: 1rem;
+    font-size: 14px;
 }
 
 /* Projects Section */
 #projects {
-    background-color: #f4f4f4;
+    background-color: #fff;
     padding: 2rem;
 }
 
 /* Others Section */
 #others {
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
+
+
+#contact {
     background-color: #fff;
     padding: 2rem;
 }
 
-#contact {
-    border: 1px solid #f4f4f4;
-    padding: 2rem;
-    margin: 10px 0;
+#contact p {
+    font-size: 14px;
 }
 
 /* Responsive Styles */
@@ -124,6 +135,7 @@ p {
 
     #about,
     #skills,
+    #work,
     #education,
     #projects,
     #others, 
