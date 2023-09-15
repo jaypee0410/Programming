@@ -6,7 +6,7 @@ html {
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    line-height: 1.2;
+    line-height: 1.5;
     background-color: #f8f8f8;
     margin: 0;
     padding: 0;
@@ -91,6 +91,7 @@ p {
 
 #education ul li {
     margin: 10px 0;
+    line-height: 1rem;
 }
 
 /* Projects Section */
