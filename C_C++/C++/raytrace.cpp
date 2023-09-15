@@ -1,3 +1,5 @@
+//I do not own the code. I found it on the internet.
+
 #include <cmath>
 #include <windows.h>
 //general config:
