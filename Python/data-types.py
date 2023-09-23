@@ -28,4 +28,3 @@ print(f"Item k is: {k}")
 print(f"Item l is: {l}")
 print(f"Item m is: {m}")
 print(f"Item n is: {n}")
-
