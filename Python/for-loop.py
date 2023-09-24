@@ -52,8 +52,12 @@
 #for x in list:
 #  print(x+2)
 
-numbers = [1, 2, 3]
-total = 0
-for n in numbers:
-    total = total + n
-print(total)
+#numbers = [1, 2, 3]
+#total = 0
+#for n in numbers:
+#    total = total + n
+#print(total)
+
+for i in range(10):
+  if not i % 2 == 0:
+    print(i+1)
