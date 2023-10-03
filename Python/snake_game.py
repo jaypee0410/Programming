@@ -1,14 +1,16 @@
 import pygame
 import tkinter as tk
+from tkinter import PhotoImage
 from tkinter import messagebox
 import random
+import time
 
 paused = False
 
 # Constants
 GRID_SIZE = 20
-GRID_WIDTH = 20
-GRID_HEIGHT = 20
+GRID_WIDTH = 50
+GRID_HEIGHT = 35
 
 # Colors
 BG_COLOR = "black"
@@ -24,9 +26,6 @@ snake_dir = (1, 0)
 # Initial food position
 food = (10, 10)
 
-# Game mode (True for corner pass, False for no corner pass)
-corner_mode = False
-
 # Score
 score = 0
 
@@ -37,6 +36,9 @@ MOVE_INTERVAL = 100  # Initial interval in milliseconds
 #move_sound = pygame.mixer.Sound("pac-man-waka-waka.mp3")
 eat_sound = pygame.mixer.Sound("snake_eat.mp3")
 
+last_direction_change_time = 0
+direction_change_cooldown = 20  # Adjust this value to set the cooldown duration in milliseconds
+
 # Function to center a window on the screen
 def center_window(window, width, height):
     screen_width = window.winfo_screenwidth()
@@ -46,7 +48,6 @@ def center_window(window, width, height):
     y = (screen_height - height) // 2
 
     window.geometry(f"{width}x{height}+{x}+{y}")
-
 
 # Create the main menu
 def main_menu():
@@ -69,6 +70,11 @@ def main_menu():
         # Implement high scores screen
         pass
 
+    def show_settings():
+        menu.destroy()
+        show_settings
+        pass
+
     def about_me():
         # Implement about me screen
         pass
@@ -77,26 +83,37 @@ def main_menu():
         if tk.messagebox.askokcancel("Exit Game", "Are you sure you want to exit?"):
             menu.destroy()
 
-
-
     start_button = tk.Button(menu, text="Start Game", command=start_game)
     instructions_button = tk.Button(menu, text="Instructions", command=show_instructions)
     high_scores_button = tk.Button(menu, text="High Scores", command=show_high_scores)
+    settings_button = tk.Button(menu, text="Settings", command=show_settings)
     about_me_button = tk.Button(menu, text="About Me", command=about_me)
     exit_button = tk.Button(menu, text="Exit Game", command=exit_game)
 
-    start_button.pack()
-    instructions_button.pack()
-    high_scores_button.pack()
-    about_me_button.pack()
-    exit_button.pack()
+    start_button.pack(side="left")
+    instructions_button.pack(side="left")
+    high_scores_button.pack(side="left")
+    settings_button.pack(side="left")
+    about_me_button.pack(side="left")
+    exit_button.pack(side="left")
 
     menu.mainloop()
 
+# Create a window for settings
+def show_settings():
+    
+    window = tk.Tk()
+    window.title("Settings")
 
-# Create a Tkinter window for the game
+    center_window(window, GRID_WIDTH * GRID_SIZE, GRID_HEIGHT * GRID_SIZE + 30)
+
+    # Make the game window active
+    window.focus_force()
+
+
+# Create a window for the game
 def create_game_window():
-    global corner_mode, snake, snake_dir, food, score, root
+    global snake, snake_dir, food, score, root
 
     root = tk.Tk()
     root.title("Snake Game")
@@ -146,9 +163,9 @@ def create_game_window():
                 food = generate_food()
 
                 # Check if the score is a multiple of 5 to increase speed
-                if score % 7 == 0:
-                    speed_level += 1
-                    MOVE_INTERVAL -= 5  # Decrease the interval to make it faster
+                if score % 1 == 0:
+                    speed_level += .5
+                    MOVE_INTERVAL -= 3  # Decrease the interval to make it faster
 
             else:
                 snake.pop()
@@ -188,25 +205,29 @@ def create_game_window():
         root.after(MOVE_INTERVAL, move_snake)
 
     def on_key_press(event):
-        global snake_dir, corner_mode, paused
-        key = event.keysym
-        current_dir = snake_dir
+        global snake_dir, paused, last_direction_change_time
 
-        if key == "Left" and current_dir != (1, 0):  # Prevent going right
-            snake_dir = (-1, 0)
-        elif key == "Right" and current_dir != (-1, 0):  # Prevent going left
-            snake_dir = (1, 0)
-        elif key == "Up" and current_dir != (0, 1):  # Prevent going down
-            snake_dir = (0, -1)
-        elif key == "Down" and current_dir != (0, -1):  # Prevent going up
-            snake_dir = (0, 1)
-        elif key == "1":
-            corner_mode = False
-        elif key == "2":
-            corner_mode = True
-        elif key == "p" or key == "P":
-            global paused
-            paused = not paused
+        # Get the current time
+        current_time = int(time.time() * 1000)
+
+        # Check if enough time has passed since the last direction change
+        if current_time - last_direction_change_time >= direction_change_cooldown:
+            key = event.keysym
+            current_dir = snake_dir
+
+            if key == "Left" and current_dir != (1, 0):  # Prevent going right
+                snake_dir = (-1, 0)
+            elif key == "Right" and current_dir != (-1, 0):  # Prevent going left
+                snake_dir = (1, 0)
+            elif key == "Up" and current_dir != (0, 1):  # Prevent going down
+                snake_dir = (0, -1)
+            elif key == "Down" and current_dir != (0, -1):  # Prevent going up
+                snake_dir = (0, 1)
+            elif key == "p" or key == "P":
+                paused = not paused
+
+        # Update the last direction change time
+        last_direction_change_time = current_time
 
     def generate_food():
         while True:
@@ -251,8 +272,6 @@ def create_game_window():
     root.bind("<Right>", on_key_press)
     root.bind("<Up>", on_key_press)
     root.bind("<Down>", on_key_press)
-    root.bind("1", on_key_press)
-    root.bind("2", on_key_press)
     root.bind("p", on_key_press)
 
     food = generate_food()
