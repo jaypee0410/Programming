@@ -3,6 +3,7 @@ import os
 
 def open_add_item_script():
     # Open another Python script in a new window
+    root.destroy()
     os.system('python Inventory_System/add_item_script.py')
 
 def remove_item():
@@ -51,7 +52,7 @@ button_font = ("Tahoma", font_size)
 
 # Add banner label
 banner_label = tk.Label(root, text="INVENTORY SYSTEM", font=("Tahoma", 36))
-banner_label.pack(side=tk.TOP, pady=20)
+banner_label.pack(side=tk.TOP, pady=200)
 
 # Add buttons for different actions
 add_button = tk.Button(root, text="Add Item", command=open_add_item_script, font=button_font, wraplength=button_width)
