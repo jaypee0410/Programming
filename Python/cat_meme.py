@@ -1,3 +1,10 @@
+import os
+os.environ["SDL_VIDEODRIVER"] = "dummy"
+import pygame
+import sys
+sys.stdout = open(os.devnull, 'w')
+sys.stderr = open(os.devnull, 'w')
+
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -9,7 +16,7 @@ pygame.mixer.init()
 def open_new_window():
     global new_window  # Declare new_window as global so it can be accessed outside the function
     new_window = tk.Toplevel(root)
-    new_window.title("New Window")
+    new_window.title("Surprise")
 
     # Load and display the image
     image_path = "cat-laughing-img.png"
@@ -39,21 +46,23 @@ def stop_audio_and_close_window():
     new_window.destroy()  # Close the new window
 
 def change_volume(volume):
+    volume_percentage = "{:.0f}".format(float(volume))
     pygame.mixer.music.set_volume(float(volume) / 100)
+    volume_label.config(text=f"Volume: {volume_percentage}%")
 
 # Create the main application window
 root = tk.Tk()
 root.title("Main Page")
 
 # Add button on main page
-button = ttk.Button(root, text="Click Me", command=open_new_window)
+button = ttk.Button(root, text="Click for surprise", command=open_new_window)
 button.pack(pady=20)
 
 # Add volume slider on main page
-volume_label = ttk.Label(root, text="Volume")
+volume_label = ttk.Label(root, text="Volume: 25%")
 volume_label.pack()
 volume_scale = ttk.Scale(root, from_=0, to=100, orient=tk.HORIZONTAL, command=change_volume)
-volume_scale.set(50)
+volume_scale.set(25)
 volume_scale.pack()
 
 # Start the main event loop
