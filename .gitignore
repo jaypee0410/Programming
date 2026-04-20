@@ -1,4 +1,4 @@
-# IDE configuration directories
+# IDE/editor settings
 .idea/
 .vscode/
 
@@ -8,6 +8,14 @@
 /dist/
 /build/
 
-# System files
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs and local env files
+*.log
+.env
+
+# OS-generated files
 .DS_Store
 Thumbs.db
