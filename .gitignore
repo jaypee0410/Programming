@@ -1,0 +1,13 @@
+# IDE configuration directories
+.idea/
+.vscode/
+
+# Build artifacts
+/bin/
+/obj/
+/dist/
+/build/
+
+# System files
+.DS_Store
+Thumbs.db
